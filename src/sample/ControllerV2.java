@@ -126,16 +126,6 @@ public class ControllerV2 implements Initializable {
 
 
 
-    private void throwErrorUnableToCreate() {
-
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Oh nein!!");
-        alert.setHeaderText("Fehler beim erstellen der Ordner");
-        alert.setContentText("Wahrscheinlich gibt es mindestens einen der Zielordner bereits");
-
-        alert.showAndWait();
-
-    }
 
 
 

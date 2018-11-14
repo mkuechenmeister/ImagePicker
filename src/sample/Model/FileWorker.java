@@ -48,7 +48,7 @@ public class FileWorker {
     public void chooseDirectoryOfJa(ActionEvent actionEvent, Label labelJa) {
 
         final File ja = selectSourceDirectory();
-        directoryofAcceptedImages = ja.getAbsolutePath();
+        setDirectoryofAcceptedImages(ja.getAbsolutePath());
         labelJa.setText(getDirectoryofAcceptedImages());
 
 
@@ -56,13 +56,12 @@ public class FileWorker {
 
     public void chooseDirectoryOfNein(ActionEvent actionEvent, Label labelNein) {
         final File nein = selectSourceDirectory();
-        directoryOfDeniedImages = nein.getAbsolutePath();
-        //setDirectoryOfSourceFile(nein.getAbsolutePath());
+        setDirectoryOfDeniedImages(nein.getAbsolutePath());
         labelNein.setText(getDirectoryOfDeniedImages());
 
     }
 
-    private void createArrayLists(File file) {
+    public void createArrayLists(File file) {
 
         file.listFiles();
         String[] list = file.list();
@@ -78,6 +77,24 @@ public class FileWorker {
 
 
         }
+    }
+
+    public void createAcceptedImageFolder(){
+        if (!createFolder(getDirectoryofAcceptedImages())) {
+            throwErrorUnableToCreate(getNameOfAcceptedFolder());
+        }
+    }
+    public void createDeniedImageFolder(){
+        if (!createFolder(getDirectoryOfDeniedImages())) {
+            throwErrorUnableToCreate(getNameOfDeniedFolder());
+        }
+    }
+
+    private boolean createFolder(String path){
+
+        boolean temp = new File(path).mkdirs();
+        return temp;
+
     }
 
 
@@ -135,7 +152,7 @@ public class FileWorker {
     }
 
 
-    public String getDirectoryofAcceptedImages() {
+    private String getDirectoryofAcceptedImages() {
         return directoryofAcceptedImages;
     }
 
@@ -201,6 +218,18 @@ public class FileWorker {
     public String getNameOfAcceptedFolder() {
         return nameOfAcceptedFolder;
     }
+
+    private void throwErrorUnableToCreate(String name) {
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Oh nein!!");
+        alert.setHeaderText("Fehler beim erstellen des "+name+" Ordners");
+        alert.setContentText("Wahrscheinlich gibt es den Zielordner bereits");
+
+        alert.showAndWait();
+
+    }
+
 
     public void setNameOfAcceptedFolder(String nameOfAcceptedFolder) {
         this.nameOfAcceptedFolder = nameOfAcceptedFolder;
