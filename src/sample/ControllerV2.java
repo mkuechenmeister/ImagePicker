@@ -74,12 +74,14 @@ public class ControllerV2 implements Initializable {
     }
 
     public void imageAccepted(ActionEvent actionEvent) {
+        System.out.println("HellYeahh!!");
     }
 
 
 
 
     public void startMeUp(ActionEvent actionEvent) {
+
        /* setDirectoryofAcceptedImages(directoryofAcceptedImages);
         setDirectoryOfDeniedImages(directoryOfDeniedImages);
         boolean successJa = new File(getDirectoryofAcceptedImages()).mkdirs();//Create Ja
@@ -108,7 +110,7 @@ public class ControllerV2 implements Initializable {
 
 
     private void displayImage(){
-        File file = new File("C:\\IntelliJProjekte\\ImagePicker\\src\\sample\\_MG_7434_SophieAugen.jpg");
+        File file = new File("C:\\IntelliJProjekte\\ImagePicker\\src\\sample\\_MG_7434_Augen.jpg");
 
         Image tempimg = new Image(file.toURI().toString());
         canvas.setImage(tempimg);
