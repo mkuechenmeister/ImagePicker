@@ -22,8 +22,8 @@ public class FileWorker {
 
     public FileWorker() {
         this.sourceFile = null;
-        this.listOfRawFiles = null;
-        this.listOfJpegFiles = null;
+        this.listOfRawFiles = new ArrayList<>();
+        this.listOfJpegFiles = new ArrayList<>();
         this.directoryOfSourceFile = null;
         this.directoryofAcceptedImages = null;
         this.directoryOfDeniedImages = null;
@@ -63,8 +63,7 @@ public class FileWorker {
 
     public void createArrayLists() {
 
-
-        String[] list = sourceFile.list();
+        String[] list = getSourceFile().list();
         for (String s : list
         ) {
             if (s.toLowerCase().contains(".cr2")) {
@@ -79,13 +78,17 @@ public class FileWorker {
         }
     }
 
-    public void startUp() {
+    public void startUp(Label label) {
         //if it is checked
         if (sourceFile != null && directoryOfDeniedImages != null && directoryofAcceptedImages != null) {
-            createArrayLists();
+            if (listOfJpegFiles.size() == 0) {
+                createArrayLists();
+            }else {
+                System.out.println("Fehler beim erstellen der ArrayList");
+            }
             createAcceptedImageFolder();
             createDeniedImageFolder();
-        } else {
+            changeLabelInQue(label);        } else {
             displayNoPathAssigned();
         }
 
@@ -101,6 +104,10 @@ public class FileWorker {
         if (!createFolder(getDirectoryOfDeniedImages())) {
             throwErrorUnableToCreate(getNameOfDeniedFolder());
         }
+    }
+
+    private void changeLabelInQue(Label label) {
+        label.setText("Es sind noch "+listOfJpegFiles.size()+" Bilder im Quellordner");
     }
 
     private boolean createFolder(String path){

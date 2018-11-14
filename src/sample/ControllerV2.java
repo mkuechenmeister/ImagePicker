@@ -41,11 +41,6 @@ public class ControllerV2 implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*this.listOfRawFiles = new ArrayList<>();
-        this.listOfJpegFiles = new ArrayList<>();
-        this.sourceFile = new File("null");
-        this.directoryofAcceptedImages = null;
-        this.directoryOfDeniedImages = null;*/
 
     }
 
@@ -82,7 +77,7 @@ public class ControllerV2 implements Initializable {
 
     public void startMeUp(ActionEvent actionEvent) {
 
-        fw.startUp();
+        fw.startUp(lblPicsInQue);
 
        /* setDirectoryofAcceptedImages(directoryofAcceptedImages);
         setDirectoryOfDeniedImages(directoryOfDeniedImages);
