@@ -8,13 +8,26 @@ import java.util.ArrayList;
 
 public class ImageWorker {
 
+    ArrayList<String> listOfImages;
+    File sourceFile;
+
 
     public ImageWorker() {
+        listOfImages = new ArrayList<>();
+        sourceFile = null;
 
     }
 
-    public int getRemainingAmountOfImages(){
-        return listOfImages.size();
+    public void setListOfImages(ArrayList<String> listOfImages) {
+        this.listOfImages = listOfImages;
+    }
+
+    public void setSourceFile(File sourceFile) {
+        this.sourceFile = sourceFile;
+    }
+
+    public ArrayList<String> getListOfImages() {
+        return listOfImages;
     }
 
     public String getCurrentImage(){
@@ -25,8 +38,8 @@ public class ImageWorker {
         return null;
     }
 
-    private void removeCurrentImageFromList(){
-        listOfImages.remove(0);
+    private void removeCurrentImageFromList(ArrayList<String> list){
+        list.remove(0);
     }
 
 
@@ -35,11 +48,10 @@ public class ImageWorker {
 
         if (cImage != null) {
 
-        String fullPath = getSourcePath();
+        String fullPath = sourceFile.toURI().toString();
         fullPath += getCurrentImage();
 
-        File tFile = new File(fullPath);
-        Image img = new Image(tFile.toURI().toString());
+        Image img = new Image(fullPath);
 
         System.out.println(fullPath);
 
@@ -49,6 +61,11 @@ public class ImageWorker {
         imageView.setPreserveRatio(true);*/
         return img;
         }else return null;
+    }
+
+    public Image getNextMain() {
+        skipImage();
+        return getMainImage();
     }
 
     private void skipImage(){
@@ -68,10 +85,7 @@ public class ImageWorker {
     }
 
 
-    public String getSourcePath() {
-        return sourcePath;
-    }
-    //todo KM: add previewImages for display(3 if array has 3)
+
 
 
 }

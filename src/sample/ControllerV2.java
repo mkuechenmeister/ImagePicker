@@ -91,6 +91,10 @@ public class ControllerV2 implements Initializable {
     public void startMeUp(ActionEvent actionEvent) {
 
         fw.startUp(lblPicsInQue);
+        iw.setListOfImages(fw.getListOfJpegFiles());
+        iw.setSourceFile(fw.getSourceFile());
+        Image mainImage = iw.getMainImage();
+        displayImage(mainImage);
 
        /* setDirectoryofAcceptedImages(directoryofAcceptedImages);
         setDirectoryOfDeniedImages(directoryOfDeniedImages);
@@ -119,11 +123,12 @@ public class ControllerV2 implements Initializable {
     }
 
 
-    private void displayImage(){
-        File file = new File("C:\\IntelliJProjekte\\ImagePicker\\src\\sample\\_MG_7434_Augen.jpg");
+    private void displayImage(Image img){
 
-        Image tempimg = new Image(file.toURI().toString());
-        canvas.setImage(tempimg);
+        canvas.setImage(img);
+        canvas.setFitHeight(800);
+        canvas.setFitWidth(1000);
+        canvas.setPreserveRatio(true);
 
         /*Image tempimg = iw.getMainImage();
         canvas.setImage(tempimg);*/
@@ -144,8 +149,7 @@ public class ControllerV2 implements Initializable {
 
     public void skipCurrentImage(ActionEvent actionEvent)
     {
-        displayImage();
-        System.out.println("Didit");
+        displayImage(iw.getNextMain());
     }
 
     public void nextOnKeyPressed(KeyEvent keyEvent) {
