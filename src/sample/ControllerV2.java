@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -61,6 +60,22 @@ public class ControllerV2 implements Initializable {
         this.fw = new FileWorker();
         this.iv = new ImageViewer(null, null);
     }
+
+    public void chooseSourceFile(ActionEvent actionEvent) {
+        fw.chooseSourceFile(actionEvent,labelSource);
+    }
+
+    public void chooseDirectoryOfJa(ActionEvent actionEvent) {
+        fw.chooseDirectoryOfJa(actionEvent,labelJa);
+    }
+
+    public void chooseDirectoryOfNein(ActionEvent actionEvent) {
+        fw.chooseDirectoryOfNein(actionEvent,labelNein);
+    }
+
+    public void imageAccepted(ActionEvent actionEvent) {
+    }
+
 
 
 
