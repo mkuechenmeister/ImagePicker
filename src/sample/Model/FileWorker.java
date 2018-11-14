@@ -17,6 +17,8 @@ public class FileWorker {
     private String directoryOfSourceFile;  //Wird im laufe des Projektes benötigt
     private String directoryofAcceptedImages; //Ja Ordner
     private String directoryOfDeniedImages; // Nein Ordner
+    private String nameOfDeniedFolder;
+    private String nameOfAcceptedFolder;
 
     public FileWorker() {
         this.sourceFile = null;
@@ -25,14 +27,16 @@ public class FileWorker {
         this.directoryOfSourceFile = null;
         this.directoryofAcceptedImages = null;
         this.directoryOfDeniedImages = null;
+        this.nameOfAcceptedFolder = "Ja";
+        this.nameOfDeniedFolder = "Nein";
     }
 
 //Step 1 auswahl des Quellordners und umlabeln des GUI-Labels
 
 
-
     /**
      * Methode zum auswählen des Quellordners in dem sich die Bilder befinden
+     *
      * @param actionEvent
      * @param labelSource
      */
@@ -41,8 +45,45 @@ public class FileWorker {
         labelSource.setText(getSourceFile().getAbsolutePath());
     }
 
+    public void chooseDirectoryOfJa(ActionEvent actionEvent, Label labelJa) {
+
+        final File ja = selectSourceDirectory();
+        directoryofAcceptedImages = ja.getAbsolutePath();
+        labelJa.setText(getDirectoryofAcceptedImages());
+
+
+    }
+
+    public void chooseDirectoryOfNein(ActionEvent actionEvent, Label labelNein) {
+        final File nein = selectSourceDirectory();
+        directoryOfDeniedImages = nein.getAbsolutePath();
+        //setDirectoryOfSourceFile(nein.getAbsolutePath());
+        labelNein.setText(getDirectoryOfDeniedImages());
+
+    }
+
+    private void createArrayLists(File file) {
+
+        file.listFiles();
+        String[] list = file.list();
+        for (String s : list
+        ) {
+            if (s.toLowerCase().contains(".cr2")) {
+                listOfRawFiles.add(s);
+            }
+
+            if (s.toLowerCase().contains(".jpeg") || s.toLowerCase().contains(".jpg")) {
+                listOfJpegFiles.add(s);
+            }
+
+
+        }
+    }
+
+
     /**
      * Private Hilfsmethode um zu checken, ob das ausgewählte Verzeichnis gültig(also nicht null) ist
+     *
      * @param selectedDirectory
      * @return true(wenn gültig), false(wenn ungültig)
      * !! wirft eine GUI-Fehlermeldung via displayNoPathAssigned()!!
@@ -53,7 +94,6 @@ public class FileWorker {
         if (selectedDirectory == null) {
 
             displayNoPathAssigned();
-
 
 
         } else {
@@ -95,18 +135,35 @@ public class FileWorker {
     }
 
 
+    public String getDirectoryofAcceptedImages() {
+        return directoryofAcceptedImages;
+    }
 
+    private void setDirectoryofAcceptedImages(String directoryofAcceptedImages) {
 
+        this.directoryofAcceptedImages = directoryofAcceptedImages + "\\"+getNameOfAcceptedFolder();
+    }
 
+    public String getDirectoryOfDeniedImages() {
+        return directoryOfDeniedImages;
+    }
 
+    private void setDirectoryOfDeniedImages(String directoryOfDeniedImages) {
+        this.directoryOfDeniedImages = directoryOfDeniedImages + "\\"+getNameOfDeniedFolder();
+    }
 
+    public String getDirectoryOfSourceFile() {
+        return directoryOfSourceFile;
+    }
 
+    public void setDirectoryOfSourceFile(String directoryOfSourceFile) {
+        this.directoryOfSourceFile = directoryOfSourceFile;
+    }
 
-
-
-
-
-
+    public void imageAccepted(ActionEvent actionEvent) {
+        System.out.println("Jep");
+        //System.out.println(mm.getListSize());
+    }
 
 
     public File getSourceFile() {
@@ -133,27 +190,21 @@ public class FileWorker {
         this.listOfJpegFiles = listOfJpegFiles;
     }
 
-    public String getDirectoryOfSourceFile() {
-        return directoryOfSourceFile;
+    public String getNameOfDeniedFolder() {
+        return nameOfDeniedFolder;
     }
 
-    public void setDirectoryOfSourceFile(String directoryOfSourceFile) {
-        this.directoryOfSourceFile = directoryOfSourceFile;
+    public void setNameOfDeniedFolder(String nameOfDeniedFolder) {
+        this.nameOfDeniedFolder = nameOfDeniedFolder;
     }
 
-    public String getDirectoryofAcceptedImages() {
-        return directoryofAcceptedImages;
+    public String getNameOfAcceptedFolder() {
+        return nameOfAcceptedFolder;
     }
 
-    public void setDirectoryofAcceptedImages(String directoryofAcceptedImages) {
-        this.directoryofAcceptedImages = directoryofAcceptedImages;
-    }
-
-    public String getDirectoryOfDeniedImages() {
-        return directoryOfDeniedImages;
-    }
-
-    public void setDirectoryOfDeniedImages(String directoryOfDeniedImages) {
-        this.directoryOfDeniedImages = directoryOfDeniedImages;
+    public void setNameOfAcceptedFolder(String nameOfAcceptedFolder) {
+        this.nameOfAcceptedFolder = nameOfAcceptedFolder;
     }
 }
+
+

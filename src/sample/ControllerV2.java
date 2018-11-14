@@ -17,6 +17,7 @@ import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import sample.Model.FileWorker;
 import sample.Model.ImageViewer;
 
 import java.io.File;
@@ -48,6 +49,7 @@ public class ControllerV2 implements Initializable {
     //private FileWorker fp;
 
     private ImageViewer iv;
+    private FileWorker fw;
 
 
     @Override
@@ -68,20 +70,10 @@ public class ControllerV2 implements Initializable {
 
         //Erfrage deun Best-Practise zugang
 
-        this.listOfRawFiles = new ArrayList<>();
-        this.listOfJpegFiles = new ArrayList<>();
-        this.sourceFile = new File("null");
-        this.directoryofAcceptedImages = null;
-        this.directoryOfDeniedImages = null;
+        this.fw = new FileWorker();
         this.iv = new ImageViewer(null, null);
-        //this.mm = new MemmoryModule(null);
     }
 
-    public void chooseSourceFile(ActionEvent actionEvent) {
-        this.sourceFile = selectSourceDirectory();
-        setSourceFile(sourceFile);
-        labelSource.setText(sourceFile.getAbsolutePath());
-    }
 
 
     public void startMeUp(ActionEvent actionEvent) {
@@ -132,23 +124,6 @@ public class ControllerV2 implements Initializable {
 
 
 
-    private void createArrayLists(File file) {
-
-        file.listFiles();
-        String[] list = file.list();
-        for (String s : list
-        ) {
-            if (s.toLowerCase().contains(".cr2")) {
-                listOfRawFiles.add(s);
-            }
-
-            if (s.toLowerCase().contains(".jpeg") || s.toLowerCase().contains(".jpg")) {
-                listOfJpegFiles.add(s);
-            }
-
-
-        }
-    }
 
 
     private void throwErrorUnableToCreate() {
@@ -163,96 +138,19 @@ public class ControllerV2 implements Initializable {
     }
 
 
-    private File selectSourceDirectory() {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedDirectory = directoryChooser.showDialog(null);
-
-        while (!checkSelection(selectedDirectory)) {
-            selectedDirectory = directoryChooser.showDialog(null);
-        }
-
-        return selectedDirectory;
-
-    }
-
-
-    public void chooseDirectoryOfJa(ActionEvent actionEvent) {
-
-        final File ja = selectSourceDirectory();
-        directoryofAcceptedImages = ja.getAbsolutePath();
-        labelJa.setText(getDirectoryofAcceptedImages());
-
-
-
-    }
-
-
-    public void chooseDirectoryOfNein(ActionEvent actionEvent) {
-        final File nein = selectSourceDirectory();
-        directoryOfDeniedImages = nein.getAbsolutePath();
-        //setDirectoryOfSourceFile(nein.getAbsolutePath());
-        labelNein.setText(getDirectoryOfDeniedImages());
-
-    }
 
 
 
 
 
 
-    public ArrayList<String> getListOfRawFiles() {
-        return listOfRawFiles;
-    }
 
-    public void setListOfRawFiles(ArrayList<String> listOfRawFiles) {
-        this.listOfRawFiles = listOfRawFiles;
-    }
 
-    public ArrayList<String> getListOfJpegFiles() {
-        return listOfJpegFiles;
-    }
 
-    public void setListOfJpegFiles(ArrayList<String> listOfJpegFiles) {
-        this.listOfJpegFiles = listOfJpegFiles;
-    }
 
-    public File getSourceFile() {
-        return sourceFile;
-    }
 
-    public void setSourceFile(File sourceFile) {
-        this.sourceFile = sourceFile;
-    }
 
-    public String getDirectoryofAcceptedImages() {
-        return directoryofAcceptedImages;
-    }
 
-    private void setDirectoryofAcceptedImages(String directoryofAcceptedImages) {
-
-        this.directoryofAcceptedImages = directoryofAcceptedImages +"\\ja";
-    }
-
-    public String getDirectoryOfDeniedImages() {
-        return directoryOfDeniedImages;
-    }
-
-    private void setDirectoryOfDeniedImages(String directoryOfDeniedImages) {
-        this.directoryOfDeniedImages = directoryOfDeniedImages +"\\nein";
-    }
-
-    public String getDirectoryOfSourceFile() {
-        return directoryOfSourceFile;
-    }
-
-    public void setDirectoryOfSourceFile(String directoryOfSourceFile) {
-        this.directoryOfSourceFile = directoryOfSourceFile;
-    }
-
-    public void imageAccepted(ActionEvent actionEvent) {
-        System.out.println("Jep");
-        //System.out.println(mm.getListSize());
-    }
 
     public void jaKeyPressed(InputMethodEvent inputMethodEvent) {
     }
