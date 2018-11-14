@@ -3,27 +3,17 @@ package sample;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
 import sample.Model.FileWorker;
 import sample.Model.ImageViewer;
-
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerV2 implements Initializable {
@@ -44,9 +34,7 @@ public class ControllerV2 implements Initializable {
     private Label labelNein;
 
 
-    //private MemmoryModule mm;
 
-    //private FileWorker fp;
 
     private ImageViewer iv;
     private FileWorker fw;
@@ -77,7 +65,7 @@ public class ControllerV2 implements Initializable {
 
 
     public void startMeUp(ActionEvent actionEvent) {
-        setDirectoryofAcceptedImages(directoryofAcceptedImages);
+       /* setDirectoryofAcceptedImages(directoryofAcceptedImages);
         setDirectoryOfDeniedImages(directoryOfDeniedImages);
         boolean successJa = new File(getDirectoryofAcceptedImages()).mkdirs();//Create Ja
         boolean successNein = new File(getDirectoryOfDeniedImages()).mkdirs();//Create Nein
@@ -91,7 +79,7 @@ public class ControllerV2 implements Initializable {
         }else {
             createArrayLists(sourceFile);
             displayImage();
-        }
+        }*/
        // mm = new MemmoryModule(listOfJpegFiles);
         //War ein anderer Lösungsansatz zur lösung meines GUI-Problemes
 
@@ -103,10 +91,6 @@ public class ControllerV2 implements Initializable {
 
     }
 
-    private void initializeImageViewer() {
-        this.iv = new ImageViewer(this.listOfJpegFiles, this.directoryOfSourceFile);
-        //wieder ein anderer lösungsansatz für meinn GUI-Problem
-    }
 
     private void displayImage(){
         File file = new File("C:\\IntelliJProjekte\\ImagePicker\\src\\sample\\_MG_7434_SophieAugen.jpg");
@@ -119,36 +103,13 @@ public class ControllerV2 implements Initializable {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void jaKeyPressed(InputMethodEvent inputMethodEvent) {
     }
 
     public void imageDeclined(ActionEvent actionEvent) {
-        int size = listOfJpegFiles.size();
+        /*int size = listOfJpegFiles.size();
         System.out.printf("Die filegröße beträgt %d ",size);
-        System.out.println(directoryOfSourceFile);
+        System.out.println(directoryOfSourceFile);*/
     }
 
     public void neinKeyPressed(KeyEvent keyEvent) {
