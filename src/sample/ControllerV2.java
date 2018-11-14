@@ -42,14 +42,7 @@ public class ControllerV2 implements Initializable {
     @FXML
     private Label labelNein;
 
-    private ArrayList<String> listOfRawFiles;
-    private ArrayList<String> listOfJpegFiles;
 
-    private File sourceFile;
-
-    private String directoryOfSourceFile;
-    private String directoryofAcceptedImages;
-    private String directoryOfDeniedImages;
     //private MemmoryModule mm;
 
     //private FileWorker fp;
