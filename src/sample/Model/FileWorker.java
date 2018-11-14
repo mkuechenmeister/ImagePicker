@@ -2,7 +2,8 @@ package sample.Model;
 
 import java.io.File;
 
-public class FilePicker {
+public class FileWorker {
 
     private File sourceFile;
+
 }
