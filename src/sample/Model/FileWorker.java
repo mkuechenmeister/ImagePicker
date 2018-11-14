@@ -1,6 +1,7 @@
 package sample.Model;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.DirectoryChooser;
 
@@ -28,10 +29,58 @@ public class FileWorker {
 
 //Step 1 auswahl des Quellordners und umlabeln des GUI-Labels
 
+
+
+    /**
+     * Methode zum auswählen des Quellordners in dem sich die Bilder befinden
+     * @param actionEvent
+     * @param labelSource
+     */
     public void chooseSourceFile(ActionEvent actionEvent, Label labelSource) {
         setSourceFile(selectSourceDirectory());
         labelSource.setText(getSourceFile().getAbsolutePath());
     }
+
+    /**
+     * Private Hilfsmethode um zu checken, ob das ausgewählte Verzeichnis gültig(also nicht null) ist
+     * @param selectedDirectory
+     * @return true(wenn gültig), false(wenn ungültig)
+     * !! wirft eine GUI-Fehlermeldung via displayNoPathAssigned()!!
+     */
+    private boolean checkSelection(File selectedDirectory) {
+        boolean returnValue = false;
+
+        if (selectedDirectory == null) {
+
+            displayNoPathAssigned();
+
+
+
+        } else {
+            System.out.println(selectedDirectory.getAbsolutePath());
+            returnValue = true;
+
+        }
+        return returnValue;
+    }
+
+    private void displayNoPathAssigned() {
+        /*Todo:KM Bei gelegenheit einen Ausstiegspunkt aus dem Programm schaffen,
+         * eventuell die Error-Message in ein Dialogsystem umbauen */
+
+
+        System.out.println("Kein Pfad angegeben");
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Oh nein!!");
+        alert.setHeaderText("Das hat leider nicht funktioniert");
+        alert.setContentText("Du hast keinen Pfad angegeben" +
+                "Versuchs bitte nochmal");
+
+
+        alert.showAndWait();
+
+    }
+
 
     private File selectSourceDirectory() {
         DirectoryChooser directoryChooser = new DirectoryChooser();

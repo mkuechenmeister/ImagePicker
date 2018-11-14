@@ -195,39 +195,8 @@ public class ControllerV2 implements Initializable {
 
     }
 
-    private boolean checkSelection(File selectedDirectory) {
-        boolean returnValue = false;
-
-        if (selectedDirectory == null) {
-
-            displayNoPathAssigned();
 
 
-
-        } else {
-            System.out.println(selectedDirectory.getAbsolutePath());
-            returnValue = true;
-
-        }
-        return returnValue;
-    }
-
-    private void displayNoPathAssigned() {
-        /*Todo:KM Bei gelegenheit einen Ausstiegspunkt aus dem Programm schaffen,
-         * eventuell die Error-Message in ein Dialogsystem umbauen */
-
-
-        System.out.println("Kein Pfad angegeben");
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Oh nein!!");
-        alert.setHeaderText("Das hat leider nicht funktioniert");
-        alert.setContentText("Du hast keinen Pfad angegeben" +
-                "Versuchs bitte nochmal");
-
-
-        alert.showAndWait();
-
-    }
 
 
 
