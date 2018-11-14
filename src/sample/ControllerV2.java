@@ -82,6 +82,8 @@ public class ControllerV2 implements Initializable {
 
     public void startMeUp(ActionEvent actionEvent) {
 
+        fw.startUp();
+
        /* setDirectoryofAcceptedImages(directoryofAcceptedImages);
         setDirectoryOfDeniedImages(directoryOfDeniedImages);
         boolean successJa = new File(getDirectoryofAcceptedImages()).mkdirs();//Create Ja

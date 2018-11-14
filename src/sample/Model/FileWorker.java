@@ -61,10 +61,10 @@ public class FileWorker {
 
     }
 
-    public void createArrayLists(File file) {
+    public void createArrayLists() {
 
-        file.listFiles();
-        String[] list = file.list();
+
+        String[] list = sourceFile.list();
         for (String s : list
         ) {
             if (s.toLowerCase().contains(".cr2")) {
@@ -77,6 +77,19 @@ public class FileWorker {
 
 
         }
+    }
+
+    public void startUp() {
+        //if it is checked
+        if (sourceFile != null && directoryOfDeniedImages != null && directoryofAcceptedImages != null) {
+            createArrayLists();
+            createAcceptedImageFolder();
+            createDeniedImageFolder();
+        } else {
+            displayNoPathAssigned();
+        }
+
+
     }
 
     public void createAcceptedImageFolder(){
