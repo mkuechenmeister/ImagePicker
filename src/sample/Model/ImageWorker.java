@@ -6,14 +6,11 @@ import javafx.scene.image.ImageView;
 import java.io.File;
 import java.util.ArrayList;
 
-public class ImageViewer {
+public class ImageWorker {
 
-    ArrayList<String> listOfImages;
-    String sourcePath;
 
-    public ImageViewer(ArrayList<String> listOfImages, String sourePath) {
-        this.listOfImages = listOfImages;
-        this.sourcePath = sourePath;
+    public ImageWorker() {
+
     }
 
     public int getRemainingAmountOfImages(){

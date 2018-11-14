@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("./View/versionzwei.fxml"));
-       //Parent cd = FXMLLoader.load(getClass().getResource("./View/ImageViewer.fxml"));
+       //Parent cd = FXMLLoader.load(getClass().getResource("./View/ImageWorker.fxml"));
 
         primaryStage.setTitle("Pick your Files");
         primaryStage.setScene(new Scene(root, 900  , 600));

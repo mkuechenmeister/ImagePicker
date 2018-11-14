@@ -27,8 +27,8 @@ public class FileWorker {
         this.directoryOfSourceFile = null;
         this.directoryofAcceptedImages = null;
         this.directoryOfDeniedImages = null;
-        this.nameOfAcceptedFolder = "Ja";
-        this.nameOfDeniedFolder = "Nein";
+        this.nameOfAcceptedFolder = "Vielleicht";
+        this.nameOfDeniedFolder = "LieberNicht";
     }
 
 //Step 1 auswahl des Quellordners und umlabeln des GUI-Labels
@@ -107,7 +107,7 @@ public class FileWorker {
     }
 
     private void changeLabelInQue(Label label) {
-        label.setText("Es sind noch "+listOfJpegFiles.size()+" Bilder im Quellordner");
+        label.setText("Es sind "+listOfJpegFiles.size()+" Bilder im Quellordner");
     }
 
     private boolean createFolder(String path){

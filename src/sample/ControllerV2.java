@@ -10,7 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import sample.Model.FileWorker;
-import sample.Model.ImageViewer;
+import sample.Model.ImageWorker;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,7 +36,7 @@ public class ControllerV2 implements Initializable {
 
 
 
-    private ImageViewer iv;
+    private ImageWorker iw;
     private FileWorker fw;
 
 
@@ -53,17 +54,29 @@ public class ControllerV2 implements Initializable {
         //Erfrage deun Best-Practise zugang
 
         this.fw = new FileWorker();
-        this.iv = new ImageViewer(null, null);
+        this.iw = new ImageWorker();
     }
 
+    /**
+     * Buttonklick zur auswahl des Sourcefolders
+     * @param actionEvent
+     */
     public void chooseSourceFile(ActionEvent actionEvent) {
         fw.chooseSourceFile(actionEvent,labelSource);
     }
 
+    /**
+     * Buttonklick zur Auswahl des Accepted-Image-Folders
+     * @param actionEvent
+     */
     public void chooseDirectoryOfJa(ActionEvent actionEvent) {
         fw.chooseDirectoryOfJa(actionEvent,labelJa);
     }
 
+    /**
+     * Buttonklick zur Auswahl des Denied-Image-Folders
+     * @param actionEvent
+     */
     public void chooseDirectoryOfNein(ActionEvent actionEvent) {
         fw.chooseDirectoryOfNein(actionEvent,labelNein);
     }
@@ -112,7 +125,7 @@ public class ControllerV2 implements Initializable {
         Image tempimg = new Image(file.toURI().toString());
         canvas.setImage(tempimg);
 
-        /*Image tempimg = iv.getMainImage();
+        /*Image tempimg = iw.getMainImage();
         canvas.setImage(tempimg);*/
 
 

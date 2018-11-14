@@ -14,7 +14,7 @@ public class Ablauf {
 
     //Create No Folder
 
-    //Display JPEG-Version via ImageViewer
+    //Display JPEG-Version via ImageWorker
 
     /*Yes->
     Checke das Format.
