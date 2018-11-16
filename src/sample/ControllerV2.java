@@ -125,7 +125,7 @@ public class ControllerV2 implements Initializable {
 
     private void displayImage(Image img){
 
-        canvas.setImage(img);
+         canvas.setImage(img);
         canvas.setFitHeight(800);
         canvas.setFitWidth(1000);
         canvas.setPreserveRatio(true);

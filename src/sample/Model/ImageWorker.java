@@ -10,11 +10,13 @@ public class ImageWorker {
 
     ArrayList<String> listOfImages;
     File sourceFile;
+    verschieben mover;
 
 
     public ImageWorker() {
         listOfImages = new ArrayList<>();
         sourceFile = null;
+        mover = null;
 
     }
 
