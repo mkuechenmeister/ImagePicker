@@ -45,7 +45,7 @@ public class ImageWorker {
 
     }
 
-    private void displayPreview(ImageView c1, ImageView c2, ImageView c3){
+    public void displayPreview(ImageView c1, ImageView c2, ImageView c3){
 
         c1.setImage(getPreview(1));
         c2.setImage(getPreview(2));
@@ -71,10 +71,10 @@ public class ImageWorker {
         String fullPath;
 
 
-        if (listOfImages.size() >= i) {
+        if (listOfImages.size() > i) {
 
             fullPath = sourceFile.toURI().toString();
-            fullPath += listOfImages.get(i - 1);
+            fullPath += listOfImages.get(i);
 
 
         } else {
@@ -95,8 +95,9 @@ public class ImageWorker {
 
 
             }
-            out = new Image(fullPath);
+
         }
+        out = new Image(fullPath);
         return out;
     }
 

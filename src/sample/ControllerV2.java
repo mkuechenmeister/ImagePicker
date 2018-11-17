@@ -48,9 +48,7 @@ public class ControllerV2 implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         displayImage(new Image("sample/img/JodaStart.jpg"));
-        displayPreview(new Image("sample/img/fastFertig.jpg"),
-                new Image("sample/img/1left.jpg"),
-                new Image("sample/img/2left.jpg"));
+
 
 
     }
@@ -103,6 +101,7 @@ public class ControllerV2 implements Initializable {
             im.setStrategy();
             im.moveFile();
             displayImage(iw.removeCurrentAndGetNext());
+            iw.displayPreview(subCanvas1,subCanvas2,subCanvas3);
             iw.reLabelQue(lblPicsInQue);
 
         }
@@ -118,6 +117,7 @@ public class ControllerV2 implements Initializable {
         iw.setSourceFile(fw.getSourceFile());
         Image mainImage = iw.getMainImage();
         displayImage(mainImage);
+        iw.displayPreview(subCanvas1,subCanvas2,subCanvas3);
 
        /* setDirectoryofAcceptedImages(directoryofAcceptedImages);
         setDirectoryOfDeniedImages(directoryOfDeniedImages);
@@ -180,6 +180,7 @@ public class ControllerV2 implements Initializable {
             im.setStrategy();
             im.moveFile();
             displayImage(iw.removeCurrentAndGetNext());
+            iw.displayPreview(subCanvas1,subCanvas2,subCanvas3);
             iw.reLabelQue(lblPicsInQue);
 
         }
@@ -191,6 +192,7 @@ public class ControllerV2 implements Initializable {
     public void skipCurrentImage(ActionEvent actionEvent)
     {
         displayImage(iw.getNextMain());
+        iw.displayPreview(subCanvas1,subCanvas2,subCanvas3);
     }
 
     public void nextOnKeyPressed(KeyEvent keyEvent) {
