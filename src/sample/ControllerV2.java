@@ -145,26 +145,7 @@ public class ControllerV2 implements Initializable {
 
     }
 
-    private void displayPreview(Image img1, Image img2, Image img3){
 
-        subCanvas1.setImage(img1);
-        subCanvas2.setImage(img2);
-        subCanvas3.setImage(img3);
-
-        subCanvas1.setFitHeight(200);
-        subCanvas1.setFitWidth(250);
-        subCanvas1.setPreserveRatio(true);
-
-        subCanvas2.setFitHeight(200);
-        subCanvas2.setFitWidth(250);
-        subCanvas2.setPreserveRatio(true);
-
-        subCanvas3.setFitHeight(200);
-        subCanvas3.setFitWidth(250);
-        subCanvas3.setPreserveRatio(true);
-
-
-    }
 
 
     private void displayImage(Image img){
