@@ -93,7 +93,13 @@ public class ImageWorker {
 
     public void reLabelQue(Label lblPicsInQue){
         int i = listOfImages.size();
-        String output = "Es sind noch " + i + " entscheidungen zu treffen.";
+        String output;
+        if (i > 0) {
+
+            output = "Es sind noch " + i + " entscheidungen zu treffen.";
+        } else {
+            output = "Du bist mit deinen Bildern durch";
+        }
         lblPicsInQue.setText(output);
     }
 

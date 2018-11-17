@@ -24,6 +24,9 @@ public class ControllerV2 implements Initializable {
     public Button btnNext;
     public Button btnJa;
     public Button btnNein;
+    public ImageView subCanvas1;
+    public ImageView subCanvas3;
+    public ImageView subCanvas2;
     @FXML
     private Label lblPicsInQue;
     @FXML
@@ -45,6 +48,10 @@ public class ControllerV2 implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         displayImage(new Image("sample/img/JodaStart.jpg"));
+        displayPreview(new Image("sample/img/fastFertig.jpg"),
+                new Image("sample/img/1left.jpg"),
+                new Image("sample/img/2left.jpg"));
+
 
     }
 
@@ -134,6 +141,27 @@ public class ControllerV2 implements Initializable {
 
         //showJaNeinView(actionEvent);
 
+
+
+    }
+
+    private void displayPreview(Image img1, Image img2, Image img3){
+
+        subCanvas1.setImage(img1);
+        subCanvas2.setImage(img2);
+        subCanvas3.setImage(img3);
+
+        subCanvas1.setFitHeight(200);
+        subCanvas1.setFitWidth(250);
+        subCanvas1.setPreserveRatio(true);
+
+        subCanvas2.setFitHeight(200);
+        subCanvas2.setFitWidth(250);
+        subCanvas2.setPreserveRatio(true);
+
+        subCanvas3.setFitHeight(200);
+        subCanvas3.setFitWidth(250);
+        subCanvas3.setPreserveRatio(true);
 
 
     }

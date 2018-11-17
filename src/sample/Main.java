@@ -14,7 +14,7 @@ public class Main extends Application {
        //Parent cd = FXMLLoader.load(getClass().getResource("./View/ImageWorker.fxml"));
 
         primaryStage.setTitle("Pick your Files");
-        primaryStage.setScene(new Scene(root, 1200  , 800));
+        primaryStage.setScene(new Scene(root, 1400  , 800));
         primaryStage.show();
         primaryStage.setFullScreen(false);
     }
