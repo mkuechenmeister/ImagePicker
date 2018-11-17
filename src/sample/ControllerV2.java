@@ -52,7 +52,7 @@ public class ControllerV2 implements Initializable {
 
         //Todo KM: hinterfrage mal wie das Gemacht wird
         //Keine Ahnung ob hier mit dem Konstruktor gearbeitet werden sollte, oder ob es nicht doch besser wäre es mit der
-        //initialiser-Methode zu machen
+        //initializer-Methode zu machen
 
         //Erfrage deun Best-Practise zugang
 
@@ -92,17 +92,14 @@ public class ControllerV2 implements Initializable {
             ArrayList<String> listOfRawFiles = fw.getListOfRawFiles();
             String directoryOfSourceFile = fw.getDirectoryOfSourceFile();
             String directoryOfAccepted = fw.getDirectoryofAcceptedImages();
-//            System.out.println("Current Image wO: " + currentImageWithoutExtension);
-//            System.out.println("Current Image: " + currentImage);
-//            System.out.println("Dir of SF: "+directoryOfSourceFile);
-//            System.out.println("Dir of Accepted: "+directoryOfAccepted);
             ImageMover im = new ImageMover(currentImageWithoutExtension, currentImage, listOfRawFiles, directoryOfSourceFile, directoryOfAccepted);
             im.setStrategy();
             im.moveFile();
             displayImage(iw.removeCurrentAndGetNext());
             iw.reLabelQue(lblPicsInQue);
 
-        }    }
+        }
+    }
 
 
 
@@ -130,7 +127,7 @@ public class ControllerV2 implements Initializable {
             createArrayLists(sourceFile);
             displayImage();
         }*/
-       // mm = new MemmoryModule(listOfJpegFiles);
+        // mm = new MemmoryModule(listOfJpegFiles);
         //War ein anderer Lösungsansatz zur lösung meines GUI-Problemes
 
         //initializeImageViewer();
@@ -164,9 +161,19 @@ public class ControllerV2 implements Initializable {
     }
 
     public void imageDeclined(ActionEvent actionEvent) {
-        /*int size = listOfJpegFiles.size();
-        System.out.printf("Die filegröße beträgt %d ",size);
-        System.out.println(directoryOfSourceFile);*/
+        if (iw.getMainImage()!=null) {
+            String currentImageWithoutExtension = iw.getCurrentImageWithoutExtension();
+            String currentImage = iw.getCurrentImage();
+            ArrayList<String> listOfRawFiles = fw.getListOfRawFiles();
+            String directoryOfSourceFile = fw.getDirectoryOfSourceFile();
+            String directoryOfAccepted = fw.getDirectoryOfDeniedImages();
+            ImageMover im = new ImageMover(currentImageWithoutExtension, currentImage, listOfRawFiles, directoryOfSourceFile, directoryOfAccepted);
+            im.setStrategy();
+            im.moveFile();
+            displayImage(iw.removeCurrentAndGetNext());
+            iw.reLabelQue(lblPicsInQue);
+
+        }
     }
 
     public void neinKeyPressed(KeyEvent keyEvent) {

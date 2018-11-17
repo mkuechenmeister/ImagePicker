@@ -17,9 +17,6 @@ public class CR2 implements verschieben {
         String destinationAsString = destination+image;
         File oldDirectory = new File(sourceAsString);
         File newDirectory = new File(destinationAsString);
-
-
-
         oldDirectory.renameTo(newDirectory);
 
     }
