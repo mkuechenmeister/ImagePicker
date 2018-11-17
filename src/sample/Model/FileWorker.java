@@ -172,7 +172,7 @@ public class FileWorker {
     }
 
 
-    private String getDirectoryofAcceptedImages() {
+    public String getDirectoryofAcceptedImages() {
         return directoryofAcceptedImages;
     }
 
@@ -190,7 +190,8 @@ public class FileWorker {
     }
 
     public String getDirectoryOfSourceFile() {
-        return directoryOfSourceFile;
+        return sourceFile.getAbsolutePath();
+
     }
 
     public void setDirectoryOfSourceFile(String directoryOfSourceFile) {

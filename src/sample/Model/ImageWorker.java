@@ -1,5 +1,6 @@
 package sample.Model;
 
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -10,13 +11,11 @@ public class ImageWorker {
 
     ArrayList<String> listOfImages;
     File sourceFile;
-    verschieben mover;
 
 
     public ImageWorker() {
         listOfImages = new ArrayList<>();
         sourceFile = null;
-        mover = null;
 
     }
 
@@ -40,8 +39,19 @@ public class ImageWorker {
         return null;
     }
 
-    private void removeCurrentImageFromList(ArrayList<String> list){
-        list.remove(0);
+    public String getCurrentImageWithoutExtension() {
+        String temp = getCurrentImage();
+        return temp = temp.substring(0,temp.indexOf("."));
+
+    }
+
+
+
+
+
+    public Image removeCurrentAndGetNext(){
+        listOfImages.remove(0);
+        return getMainImage();
     }
 
 
@@ -80,6 +90,14 @@ public class ImageWorker {
         }
 
     }
+
+    public void reLabelQue(Label lblPicsInQue){
+        int i = listOfImages.size();
+        String output = "Es sind noch " + i + " entscheidungen zu treffen.";
+        lblPicsInQue.setText(output);
+    }
+
+
 
     private void displayEndOfListMessage() {
 

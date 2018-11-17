@@ -4,7 +4,8 @@ public interface verschieben {
 
 
 
-    public void execute(String datei, String pfad);
+    public void execute(String image, String source, String destination);
+
 
 
 

@@ -10,10 +10,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import sample.Model.FileWorker;
+import sample.Model.ImageMover;
 import sample.Model.ImageWorker;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerV2 implements Initializable {
@@ -42,6 +44,7 @@ public class ControllerV2 implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        displayImage(new Image("sample/img/JodaStart.jpg"));
 
     }
 
@@ -82,8 +85,24 @@ public class ControllerV2 implements Initializable {
     }
 
     public void imageAccepted(ActionEvent actionEvent) {
-        System.out.println("HellYeahh!!");
-    }
+
+        if (iw.getMainImage()!=null) {
+            String currentImageWithoutExtension = iw.getCurrentImageWithoutExtension();
+            String currentImage = iw.getCurrentImage();
+            ArrayList<String> listOfRawFiles = fw.getListOfRawFiles();
+            String directoryOfSourceFile = fw.getDirectoryOfSourceFile();
+            String directoryOfAccepted = fw.getDirectoryofAcceptedImages();
+//            System.out.println("Current Image wO: " + currentImageWithoutExtension);
+//            System.out.println("Current Image: " + currentImage);
+//            System.out.println("Dir of SF: "+directoryOfSourceFile);
+//            System.out.println("Dir of Accepted: "+directoryOfAccepted);
+            ImageMover im = new ImageMover(currentImageWithoutExtension, currentImage, listOfRawFiles, directoryOfSourceFile, directoryOfAccepted);
+            im.setStrategy();
+            im.moveFile();
+            displayImage(iw.removeCurrentAndGetNext());
+            iw.reLabelQue(lblPicsInQue);
+
+        }    }
 
 
 
@@ -125,7 +144,12 @@ public class ControllerV2 implements Initializable {
 
     private void displayImage(Image img){
 
-         canvas.setImage(img);
+        if (img != null) {
+
+            canvas.setImage(img);
+        } else {
+            canvas.setImage(new Image("sample/img/JodaEnd.jpg"));
+        }
         canvas.setFitHeight(800);
         canvas.setFitWidth(1000);
         canvas.setPreserveRatio(true);
@@ -136,6 +160,7 @@ public class ControllerV2 implements Initializable {
 
     }
     public void jaKeyPressed(InputMethodEvent inputMethodEvent) {
+
     }
 
     public void imageDeclined(ActionEvent actionEvent) {

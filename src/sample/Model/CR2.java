@@ -1,10 +1,31 @@
 package sample.Model;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class CR2 implements verschieben {
+
+
+
     @Override
-    public void doIt(String datei, String pfad) {
+    public void execute(String image, String source, String destination) {
+
+        image = "\\"+image + ".CR2";
+
+        String sourceAsString = source+image;
+        String destinationAsString = destination+image;
+        File oldDirectory = new File(sourceAsString);
+        File newDirectory = new File(destinationAsString);
+
+
+
+        oldDirectory.renameTo(newDirectory);
+
+    }
+}
+
+
 
         //erstelle die CR2-Datei
 
@@ -21,11 +42,14 @@ public class CR2 implements verschieben {
 
 
        // myFile.renameTo(new File("/the/new/place/newName.file"));
+
+
+/*
         File temp = new File(pfad+name);
         temp.renameTo(new File(pfad));
+*/
 
         /*Nimm das CR2 objekt aus dem Array.
         * Verschiebe das CR2 Ob*/
 
-    }
-}
+

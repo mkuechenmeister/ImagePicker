@@ -1,23 +1,64 @@
 package sample.Model;
 
+import javafx.scene.image.Image;
+
+import java.util.ArrayList;
+
 // ist die Context - Klasse
 public class ImageMover {
 
     private verschieben strategy;
-    private String imagename;
+    private String image;
+    private String current;
+    private String goal;
+    private String source;
+    private String destination;
+    private ArrayList<String> listOfRawFIles;
 
 
-    public ImageMover(String imagename) {
-        this.imagename = imagename;
 
+
+    public ImageMover(String imageWithoutExtension, String currentImage ,ArrayList<String> listOfRawFiles, String source, String destination) {
+        this.image = imageWithoutExtension;
+        this.current = currentImage;
+        this.listOfRawFIles = listOfRawFiles;
+        this.source=source;
+        this.destination=destination;
+        setGoal(image);
+
+    }
+
+    public void setGoal(String image) {
+        this.goal = image+".CR2";
     }
 
     private String getExtension() {
-        String temp = imagename.substring(0, imagename.lastIndexOf('.')).toLowerCase();
+        String temp = image;
+        temp = temp.substring(temp.indexOf("."));
         return temp;
     }
 
-    public verschieben getStrategy(String imagename){
+    public void setStrategy(){
+
+        System.out.println(goal);
+
+        if (listOfRawFIles.contains(goal)) {
+            strategy = new CR2();
+        }else{
+            //default Strategy
+            strategy = new JPG();
+        }
+
+
+
+    }
+
+    public void moveFile() {
+
+        strategy.execute(image,source,destination);
+    }
+
+    /*public verschieben getStrategy(String imagename){
         Extentions ext = null;
         verschieben strategy = new JPEG();
         // default Strategy = JPEG
@@ -30,7 +71,7 @@ public class ImageMover {
             strategy = new CR2();
         }
         return  strategy;
-    }
+    }*/
 
 
 }
