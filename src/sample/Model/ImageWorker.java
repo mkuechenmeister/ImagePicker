@@ -81,13 +81,13 @@ public class ImageWorker {
 
             switch (i) {
                 case 1:
-                    fullPath = "sample/img/fastFertig.jpg";
+                    fullPath = "sample/img/1pl.jpg";
                     break;
                 case 2:
-                    fullPath = "sample/img/1left.jpg";
+                    fullPath = "sample/img/2pl.jpg";
                     break;
                 case 3:
-                    fullPath = "sample/img/2left.jpg";
+                    fullPath = "sample/img/3pl.jpg";
                     break;
                 default:
                     fullPath = "sample/img/oops.jpg";

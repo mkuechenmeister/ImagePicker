@@ -13,7 +13,6 @@ import sample.Model.FileWorker;
 import sample.Model.ImageMover;
 import sample.Model.ImageWorker;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -47,7 +46,7 @@ public class ControllerV2 implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        displayImage(new Image("sample/img/JodaStart.jpg"));
+        displayImage(new Image("sample/img/YodaStart.jpg"));
 
 
 
@@ -154,7 +153,7 @@ public class ControllerV2 implements Initializable {
 
             canvas.setImage(img);
         } else {
-            canvas.setImage(new Image("sample/img/JodaEnd.jpg"));
+            canvas.setImage(new Image("sample/img/YodaEnd"));
         }
         canvas.setFitHeight(800);
         canvas.setFitWidth(1000);
