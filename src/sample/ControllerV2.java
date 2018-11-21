@@ -153,7 +153,7 @@ public class ControllerV2 implements Initializable {
 
             canvas.setImage(img);
         } else {
-            canvas.setImage(new Image("sample/img/YodaEnd"));
+            canvas.setImage(new Image("sample/img/YodaEnd.jpg"));
         }
         canvas.setFitHeight(800);
         canvas.setFitWidth(1000);
