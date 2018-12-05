@@ -39,12 +39,22 @@ public class ImageWorker {
         return null;
     }
 
+    /**
+     * Gibt den Bildnamen zurück
+     * @return
+     */
     public String getCurrentImageWithoutExtension() {
         String temp = getCurrentImage();
         return temp = temp.substring(0,temp.indexOf("."));
 
     }
 
+    /**
+     * Methode zum Darstellen der Preview Images
+     * @param c1 Canvas 1
+     * @param c2 Canvas 2
+     * @param c3 Canvas 3
+     */
     public void displayPreview(ImageView c1, ImageView c2, ImageView c3){
 
         c1.setImage(getPreview(1));
@@ -66,6 +76,11 @@ public class ImageWorker {
 
     }
 
+    /**
+     * Hilfsmethode um PreviewImage zu holen
+     * @param i
+     * @return
+     */
     private Image getPreview(int i) {
         Image out = null;
         String fullPath;
@@ -91,6 +106,7 @@ public class ImageWorker {
                     break;
                 default:
                     fullPath = "sample/img/oops.jpg";
+
                     break;
 
 
